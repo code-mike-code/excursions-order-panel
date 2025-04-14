@@ -1,0 +1,10 @@
+
+.panel {
+    font-size: var(--font-size-l);
+}
+.panel__form {
+    width: 500px;
+}
+.summary__prices {
+    width: 100%;
+}

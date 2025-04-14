@@ -1,0 +1,103 @@
+/*  MOBILE  */
+
+.panel__excursions {
+    display: flex;
+    color: black;
+}
+.excursions {
+    display: flex;
+    flex-wrap: wrap;
+}
+.excursions__header {
+    text-align: center;
+}
+.excursions__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+}
+.excursions__item--prototype {
+    display: none;
+}
+.excursions__description {
+    margin: 5px 0 10px 0;
+}
+.excursions__field{
+    text-align: center;
+}
+.excursions__field-input{
+    margin: 10px 0;
+}
+.excursions__field--submit{
+    margin: 22px 0;
+}
+.excursions__field-input--submit{
+    display: none;
+}
+.panel__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-ultimate-grey);
+    width: 100%;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0;
+}
+.uploader, .order {
+    border-bottom: 1px solid var(--color-illuminating-yellow);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.uploader__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.uploader__input {
+    display: none;
+}
+.panel__order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.order__field {
+    margin: 5px 0;
+}
+.order__field-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.order__field-input {
+    border-radius: 4px;
+    min-height: 30px;
+    min-width: 200px;
+}
+.order__field-submit {
+    display: none;
+}
+.summary__item {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-right: 10px;
+}
+.summary__item--prototype {
+    display: none;
+}
+.summary__btn-remove {
+    text-decoration: none;
+    text-transform: lowercase;
+    margin-left: 5px;
+    padding: 5px;
+    color: red;
+}
