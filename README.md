@@ -1,6 +1,6 @@
 # Excursions order panel 
 
-See the live version of [Calculator project](https://code-mike-code.github.io/task-js-basics/).
+See the live version of [Excursions order panel](https://code-mike-code.github.io/excursions-order-panel/).
 
 Project made during learning process with my mentor program [devmentor.pl](https://devmentor.pl/). This project is a JavaScript-based travel order system that allows users to:
 
