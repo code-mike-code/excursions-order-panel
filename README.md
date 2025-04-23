@@ -1,119 +1,74 @@
+# Excursions order panel 
 
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+See the live version of [Calculator project](https://code-mike-code.github.io/task-js-basics/).
+
+Project made during learning process with my mentor program [devmentor.pl](https://devmentor.pl/). This project is a JavaScript-based travel order system that allows users to:
+
+• Upload a CSV file containing travel offers
+• Select trips, specify the number of adults/children, and add them to an order list
+• Review and remove items from the order summary
+• Submit the order with validated customer details
+
+The system dynamically generates trip cards from CSV data, calculates the total price, and ensures proper form validation before submission.
+
+
+# Key Functionalities
+
+1. CSV Data Processing
+Parses uploaded CSV files with trip data (ID, name, description, adult/child prices)
+Handles edge cases (commas in descriptions, line breaks)
+Dynamically renders trip cards in the UI
+
+2. Order Management
+Adds/removes trips from the order summary
+Recalculates the total price in real-time
+Stores order data in a structured format
+
+3. Form Validation
+Validates required fields (name, email)
+Checks email format (must contain "@")
+Displays error messages for invalid inputs
+
+4. Order Submission
+Shows a confirmation alert with order details
+Clears all forms and resets the UI after submission
 
 &nbsp;
+ 
+## 💡 Technologies
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-grey?style=for-the-badge&logo=javascript)
 
 
-# JavaScript: Formularze
+&nbsp;
+ 
+## 🔗 See also
 
-Zdobyliśmy zlecenie, które zostało porzucone przez poprzedniego programistę. Polega ono na składaniu zamówienia na wycieczki importowane z [pliku CSV](https://pl.wikipedia.org/wiki/CSV_(format_pliku)).
+Are you interested in **SCSS** and **JavaScript**? See my other project [Landing Page MGUU](https://code-mike-code.github.io/landing_page_project/).
 
-Część kodu HTML i CSS już napisano. Naszym zadaniem jest utworzenie logiki i wyglądu. 
+&nbsp;
+ 
+## 💿 Installation
 
-To oznacza, że tym razem nie tylko działamy w JavaScripcie, ale musimy też ostylować poszczególne elementy według własnego uznania, aby lepiej się prezentowały.
-
-## Wymagania klienta
-
-Klient oczekuje, że użytkownik strony będzie mógł załadować sobie za pomocą formularza (`.uploader__input`) plik CSV, na podstawie którego zostaną do strony dodane wycieczki.
-
-W pliku [`./example.csv`](./example.csv) w każdym wierszu mamy dane na temat jednej wycieczki. Wartości te są rozdzielone przecinakami. Są to kolejno: **id**, **nazwa**, **opis**, **cena za dorosłego** oraz **cena za dziecko**.
-
-Po załadowaniu oferty użytkownik może wybrać dowolną wycieczkę. Wystarczy, że w polach formularza tej wycieczki wprowadzi liczbę osób dorosłych oraz dzieci i kliknie przycisk „dodaj do zamówienia” (`.excursions__field-input--submit`).
-
-Wówczas „w koszyku” na liście (`.summary`) pojawi się kolejny element zawierający podsumowanie danych wybranej wycieczki. Jednocześnie cena za całość (`.order__total-price-value`) ulegnie zmianie.
-
-Każda zamówiona wycieczka może zostać usunięta z listy po kliknięciu X (`.summary__btn-remove`).
-
-Po dokonaniu wyboru wycieczek użytkownik może złożyć zamówienie. W tym celu wypełnia formularz zamówienia (`.order`).
-
-Przed wysłaniem formularza musimy sprawdzić, czy pola zostały prawidłowo wypełnione, m.in. czy pole z imieniem i nazwiskiem nie jest puste i czy adres e-mail jest prawidłowy (np. zawiera znak @).
-
-Jeśli dane są niepoprawne, to należy utworzyć w kodzie HTML stosowne miejsce i tam dodać odpowiednie komunikaty.
-
-Gdy użytkownik prawidłowo złoży zamówienie, wyświetlamy `alert()` z komunikatem: 
-
-> Dziękujemy za złożenie zamówienia o wartości [kwota zamówienia] PLN. Szczegóły zamówienia zostały wysłane na adres e-mail: adres@wpisanywformularzu.pl.
-
-Następnie czyścimy pola wszystkich formularzy i listę wybranych wycieczek.
-
-## Implementacja
-
-Potraktuj opis powyżej jako wytyczne, o których klient sam Ci opowiedział. Aby efektywnie pracować, powinieneś przed zabraniem się za realizację projektu uporządkować problemy i podzielić je na mniejsze części.
-
-Tutaj widzimy trzy główne zagadnienia:
-* ładowanie wycieczek
-* dodawanie wycieczek do listy zamówionych
-* obsługę formularza zamówienia.
-
-Za każde kolejne zagadnienie z takiej listy powinniśmy zabierać się dopiero wtedy, gdy wcześniejsze zostało wykonane prawidłowo (działa).
-
-Poszczególne elementy, np. „ładowanie wycieczek” też możemy podzielić na mniejsze części. Zawsze zastanówmy się, jakie jest kolejne (najbliższe) działanie niezbędne do osiągnięcia celu.
-
-W przypadku „ładowania wycieczek” powinniśmy zrealizować następujące zadania:
-* obsługa wybierania pliku przez użytkownika
-* pobranie zawartości pliku
-* podział tej zawartości na wiersze (wycieczki)
-* podział wiersza na poszczególne elementy (id, nazwa itp.)
-* utworzenie odpowiednich elementów HTML i wypełnienie ich danymi
-* dodanie ich do drzewa DOM
-
-W ten sposób powinniśmy rozplanować pozostałe kroki.
-
-### CSV
-
-Przyjrzyjmy się plikowi [`./example.csv`](./example.csv):
-
-```
-"1","Ogrodzieniec","Zamek Ogrodzieniec – ruiny zamku leżącego na Jurze Krakowsko-Częstochowskiej, wybudowanego w systemie tzw. Orlich Gniazd, we wsi Podzamcze w województwie śląskim, w powiecie zawierciańskim, około 2 km na wschód od Ogrodzieńca. Zamek został wybudowany w XIV – XV w. przez ród Włodków Sulimczyków.","99","50"
-"2","Ojców","wieś w województwie małopolskim, w powiecie krakowskim, w gminie Skała, na terenie Wyżyny Krakowsko-Częstochowskiej, w Dolinie Prądnika, na Szlaku Orlich Gniazd. W Królestwie Polskim istniała gmina Ojców. W latach 1975–1998 miejscowość położona była w województwie krakowskim. W latach 1928–1966 Ojców miał status uzdrowiska posiadającego charakter użyteczności publicznej.","40","15"
-```
-
-Jeśli te dane mielibyśmy zapisane w zmiennej `const text`, to zamienienie tego ciągu znaków na tablicę, w której każdy element to wiersz, mogłoby wyglądać tak:
-
-```
-const lines = text.split(/[\r\n]+/gm);
-```
-
-W zależności od systemu operacyjnego znak nowej linii to `\n`, `\r` lub `\r\n`, dlatego używamy wyrażenia regularnego w celu podzielenia tekstu na wiersze.
-
-Podział na „kolumny” (czyli wyodrębnienie danych takich jak id, nazwa itp.) będzie trochę trudniejszy. Podział względem przecinka nie zadziała za dobrze, ponieważ ten znak może się też znajdować w treści opisu.
-
-Jak rozwiązać ten problem? To zostawiam już Tobie ;)
-
-### Zdarzenia
-
-Zauważ, że wycieczki są tworzone dynamicznie przez wybranie odpowiedniego pliku. To powoduje, że w momencie załadowania drzewa DOM nie możemy ich wyszukać ani tym bardziej utworzyć nasłuchiwania.
-
-Jednak od czego jest propagacja? Może warto zrobić nasłuchiwanie na elemencie, który istnieje w drzewie DOM (`.excursions`) i sprawdzać, co wywołuje dane zdarzenie (`e.target` lub `e.currentTarget`)?
-
-### Koszyk
-
-Przechowywanie wybranych wycieczek na liście to pewna forma koszyka – jak w sklepie internetowym. Mamy przedmiot oraz jego cenę i ilość (x2 – bo dla dorosłych i dzieci).
-
-Możesz utworzyć sobie zmienną `const basket = []` i tam `push`ować obiekt z odpowiednimi danymi:
-
-```
-{
-    title: 'Ogrodzieniec',
-    adultNumber: 1,
-    adultPrice: 99,
-    childNumber: 2,
-    childPrice: 50,
-}
-```
-
-### Prototypy
-
-Zauważ, że w kodzie występują prototypy (`.*--prototype`). Są one używane tylko po to, aby ułatwić prezentację danych. Możesz je modyfikować, jeśli uważasz, że to Ci pomoże w tworzeniu logiki (np. dodać `dataset`).
-
-Docelowo mają być one niewidoczne – możesz je ukryć przy pomocy CSS (`display: none`). Warto je jednak wykorzystać do skopiowania struktury kodu HTML, aby nie musieć budować jej od podstaw w kodzie JS.
+No Required
 
 
 &nbsp;
 
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+## 💭 Conclusions for future projects
+
+Dynamic Content Handling - Event delegation is crucial when working with DOM elements created after page load. CSV Parsing - Special characters require robust parsing logic beyond simple split(). State Management - A centralized "basket" array simplifies order tracking and calculations. Validation Feedback - Inline error messages improve UX more than generic alerts. This project demonstrates practical JavaScript skills including DOM manipulation, form handling, and data processing - all while maintaining clean, maintainable code.
+
+
+&nbsp;
+
+## 🙋‍♂️ Feel free to Reach Out!
+If you have questions, ideas, or just want to chat about code (or the meaning of life), don’t hesitate to contact me. Open an issue, drop me a pull request, or send a message—carrier pigeon works too, but GitHub might be faster. Let’s build something awesome together! 🚀
+
+
+&nbsp;
+
+## 👏 Thanks / Special thanks / Credits
+Thanks to my [Mentor - devmentor.pl](https://devmentor.pl/) – for providing me with this task and for code review.
 
